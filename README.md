@@ -18,5 +18,8 @@ Dependencies
 * python-oauth2 [2]
 
 
+
+
 [1] http://www.hattrick.org
+
 [2] https://github.com/simplegeo/python-oauth2
