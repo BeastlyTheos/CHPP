@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import contextlib
 import oauth2 as oauth
-import urllib2
-import urlparse
-from urllib import urlencode
+import urllib.request, urllib.error, urllib.parse
+import urllib.parse
+from urllib.parse import urlencode
 
 class OAuthHelper(object):
     '''
@@ -42,10 +42,10 @@ class OAuthHelper(object):
         # sign it
         req.sign_request(self.signature_method, self.consumer, None)
         
-        with contextlib.closing(urllib2.urlopen(req.to_url())) as x:
+        with contextlib.closing(urllib.request.urlopen(req.to_url())) as x:
             # send the request
             responseData = x.read()
-            request_token = dict(urlparse.parse_qsl(responseData))
+            request_token = dict(urllib.parse.parse_qsl(responseData))
             
             # parse the response
             self.oauth_req_token = request_token['oauth_token']
@@ -75,10 +75,10 @@ class OAuthHelper(object):
         # sign it
         req.sign_request(self.signature_method, self.consumer, token)
 
-        with contextlib.closing(urllib2.urlopen(req.to_url())) as x:
+        with contextlib.closing(urllib.request.urlopen(req.to_url())) as x:
             # send the request
             responseData = x.read()
-            request_token = dict(urlparse.parse_qsl(responseData))
+            request_token = dict(urllib.parse.parse_qsl(responseData))
 
             token = oauth.Token(request_token['oauth_token'],
                             request_token['oauth_token_secret'])
@@ -101,7 +101,7 @@ class OAuthHelper(object):
         # sign it
         req.sign_request(self.signature_method, self.consumer, token)
     
-        with contextlib.closing(urllib2.urlopen(req.to_url(), timeout=10)) as x:
+        with contextlib.closing(urllib.request.urlopen(req.to_url(), timeout=10)) as x:
             # send the request
             responseData = x.read()
             
