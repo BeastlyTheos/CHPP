@@ -48,11 +48,11 @@ class OAuthHelper(object):
             request_token = dict(urllib.parse.parse_qsl(responseData))
             
             # parse the response
-            self.oauth_req_token = request_token['oauth_token']
-            self.oauth_req_token_secret = request_token['oauth_token_secret']
+            self.oauth_req_token = request_token['oauth_token'.encode('ascii')]
+            self.oauth_req_token_secret = request_token['oauth_token_secret'.encode('ascii')]
             
             # return the authorization url, with the token
-            return "%s?oauth_token=%s" % (self.authorize_path, request_token['oauth_token'])
+            return "%s?oauth_token=%s" % (self.authorize_path, request_token['oauth_token'.encode('ascii')])
     
     
     def get_access_token(self, pin):
