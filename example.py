@@ -16,11 +16,13 @@ registration_url = oauth_helper.get_request_token_url()
 # to chpp.hattrick.org) and enter his username and password. At the end of the
 # process, a PIN is presented on their browser ('pin').
 # diagram: steps C, D
-pin = 'XXXXXXXXXXXXXXXXXXXXXXX'
+print( "enter pin")
+pin = input().__str__()
 
 # Get a valid Access Token, by using the generated pin.
 # diagram: steps E, F
 access_token = oauth_helper.get_access_token(pin)
+print( "Your access tokens are", access_token)
 
 # The Access Token is now ready to be used. For convenience, the key and
 # secret should be stored on a database or permanent storage:
