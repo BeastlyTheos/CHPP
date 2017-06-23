@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-from oauthhelper import OAuthHelper
+from CHPP import CHPP
 
 # create a new helper object
-oauth_helper = OAuthHelper()
+oauth_helper = CHPP()
 
 # 1) Obtain user authorization
 # This steps contains the logic for obtaining an Access Token from the end

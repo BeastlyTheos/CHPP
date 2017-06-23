@@ -6,7 +6,7 @@ import urllib.parse
 from urllib.parse import urlencode
 import xmltodict
 
-class OAuthHelper(object):
+class CHPP(object):
     '''
     classdocs
     '''
